@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Source+Sans+3:wght@400;600&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  background-color: #643572;
+  color: #fff;
+}
+
+.container {
+  margin: auto;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  gap: 5px;
+}/*# sourceMappingURL=style.css.map */
