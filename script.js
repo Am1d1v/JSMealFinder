@@ -72,8 +72,37 @@ function getMealByID(mealID){
 
 // Add Meal To DOM
 function addMealToDOM(meal){
-    
+    const ingredients = [];
+
+    // Meal Ingredients and Measurements array
+    for(let i = 1; i <= 20; i++){
+        if(meal[`strIngredient${i}`]){
+            ingredients.push(`${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`);
+        } else {
+            // If ingredients did't found
+            break;
+        }
+    }
+   // console.log(ingredients)
+
+    // Insert Meal Data to DOM
+    single_mealElement.innerHTML = `
+    <div class="single-meal">
+        <h2>${meal.strMeal}</h2>
+        <img src="${meal.strMealThumb}" alt="MealImg"/>
+        <div class="single-meal-info">
+            ${meal.strCategory ? `<p>${meal.strCategory}</p>` : ``}
+            ${meal.strArea ? `<p>${meal.strArea}</p>` : ``}
+        </div>
+        <div class="main">
+            <p>${meal.strInstructions}</p>
+        </div>
+    </div>
+`;
+
 }
+
+
 
 // Event Listeners
 submit.addEventListener('submit', searchMeal);

@@ -87,6 +87,14 @@ input, button {
   opacity: 1;
 }
 
+.single-meal {
+  border: 1px solid #fff;
+  margin-top: 15px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
 @media (max-width: 500px) {
   input {
     width: 100%;
