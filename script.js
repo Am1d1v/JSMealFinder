@@ -19,7 +19,6 @@ function searchMeal(event){
 
     // Get the search data
     const searchData = search.value
-    console.log(searchData, typeof searchData)
 
 
     // Check for empty and fetch data
@@ -45,7 +44,7 @@ function searchMeal(event){
                         </div>
                     </div>
                     `
-                }).join(' ');
+                }).join('');
             }
 
 
@@ -59,10 +58,46 @@ function searchMeal(event){
         }
     }
 
+// Fetch Meal by ID. Lookup full meal details by id
+function getMealByID(mealID){
+    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`)
+    .then(res => res.json())
+    .then(mealData => {
+        const meal = mealData.meals[0];
+        console.log(meal)
 
+        addMealToDOM(meal)
+    });
+}
+
+// Add Meal To DOM
+function addMealToDOM(meal){
+    
+}
 
 // Event Listeners
 submit.addEventListener('submit', searchMeal);
+
+mealsElements.addEventListener('click',(event) => {
+    const mealInfo = event.composedPath().find((item => {
+        if(item.classList){
+            return item.classList.contains('meal-info');
+        } else {
+            return false
+        }
+    }))
+
+    // Get meal ID
+    if(mealInfo){
+        const mealID = mealInfo.getAttribute('data-mealid');
+        
+        getMealByID(mealID)
+        
+        //console.log(mealID)
+    }
+
+    //console.log(mealInfo);
+});
 
 
 
