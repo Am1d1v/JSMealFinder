@@ -23,11 +23,12 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin-top: 500px;
 }
 
 .flex {
-  display: flex;
   gap: 2px;
+  display: inline-block;
 }
 
 input, button {
