@@ -22,12 +22,37 @@ function searchMeal(event){
     console.log(searchData, typeof searchData)
 
 
-    // Check for empty
+    // Check for empty and fetch data
     if(searchData.trim()){
         fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchData.toString()}`)
         .then(res => res.json())
         .then(data => {
             console.log(data)
+
+            resultHeading.innerHTML = `<h2>Search results for '${searchData}' :</h2>`
+
+            
+            if(data.meals === null){
+                // If search meal not found
+                resultHeading.innerHTML = `<h3>There are no search results for '${searchData}'</h3>`
+            } else {
+                mealsElements.innerHTML = data.meals.map((meal) => {
+                    return `
+                    <div class="meal">
+                        <img src="${meal.strMealThumb}" alt="${meal.srtMeal}"/>
+                        <div class="meal-info" data-mealID="${meal.idMeal}">
+                            <h3>${meal.strMeal}</h3>
+                        </div>
+                    </div>
+                    `
+                }).join(' ');
+            }
+
+
+            // Clear Search Text
+            search.value = '';
+
+
         });
     } else {
         alert('Input Field is empty')
